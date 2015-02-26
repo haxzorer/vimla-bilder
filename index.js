@@ -49,14 +49,15 @@ $(document).ready(function () {
     startAnimation(imgsOne);
     startAnimation(imgsTwo);
 
-    $('#stop').on('click', function () {
-        increment = 0;
+    $('#toggle').on('click', function () {
+        if (increment === 0) {
+            increment = 1;
+            $(this).html('Stop');
+        } else {
+            increment = 0;
+            $(this).html('Start');
+        }
     });
-
-    $('#start').on('click', function () {
-        increment = 1;
-    });
-
     function startAnimation (imgs) {
         var currentIndex = 0;
         var prevIndex = -1;
