@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var img;
     var i;
+    var increment = 0;
     for (i = 20; i > -1; i--) {
         if (i < 10) {
             //img = $('<img/>').attr('src', 'https://vimla.se/images/milk-0' + i + '.jpg');
@@ -48,6 +49,14 @@ $(document).ready(function () {
     startAnimation(imgsOne);
     startAnimation(imgsTwo);
 
+    $('#stop').on('click', function () {
+        increment = 0;
+    });
+
+    $('#start').on('click', function () {
+        increment = 1;
+    });
+
     function startAnimation (imgs) {
         var currentIndex = 0;
         var prevIndex = -1;
@@ -71,7 +80,7 @@ $(document).ready(function () {
                     prevIndex = currentIndex + 1;
                 } else {
                     prevIndex = currentIndex;
-                    currentIndex++;
+                    currentIndex += increment;
                 }
             } else if(rotation === 'asc') {
                 if (prevIndex <= imgs.length) {
@@ -86,7 +95,7 @@ $(document).ready(function () {
                     prevIndex = currentIndex - 1;
                 } else {
                     prevIndex = currentIndex;
-                    currentIndex--;
+                    currentIndex -= increment;
                 }
 
                 
